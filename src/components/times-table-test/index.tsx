@@ -32,7 +32,7 @@ function TimesTablesTest({ questionSet, updateQuestionSet: saveQuestionSet, comp
         updateQuestionSet(parseInt(questionAnswer));
     };
 
-    const updateQuestionSet = (answer: number | undefined) => {
+    const updateQuestionSet = useCallback((answer: number | undefined) => {
         const newQuestions: Question[] = [];
 
         questionSet?.questions.forEach(question => {
@@ -65,7 +65,7 @@ function TimesTablesTest({ questionSet, updateQuestionSet: saveQuestionSet, comp
             answerInput.current.focus();
         }
 
-    }
+    }, [completeTest, getTimeTaken, questionNumber, questionSet, saveQuestionSet]);
 
     const updateTimeGone = useCallback(
         () => {
@@ -87,7 +87,7 @@ function TimesTablesTest({ questionSet, updateQuestionSet: saveQuestionSet, comp
             return;
         }
         setTimeout(updateTimeGone, 1000);
-    }, [updateTimeGone, timeGone, completeTest, timesUp, questionSet?.timer]);
+    }, [updateTimeGone, timeGone, completeTest, timesUp, questionSet?.timer, updateQuestionSet]);
 
     return (
         <div>
