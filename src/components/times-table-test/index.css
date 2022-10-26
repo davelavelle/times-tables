@@ -1,0 +1,18 @@
+#times-table-test .form-label {
+    font-size: 64px;
+}
+
+#times-table-test .form-control {
+    font-size: 64px;
+    text-align: right;
+}
+
+@media only screen and (max-width: 450px) {
+    #times-table-test .form-label {
+        font-size: 36px;
+    }
+
+    #times-table-test .form-control {
+        font-size: 36px;
+    }
+}

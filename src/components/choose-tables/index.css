@@ -1,0 +1,11 @@
+#choose-tables .form-control{
+    border: none !important;
+}
+
+#choose-tables.form-switch{
+    padding-left: 3.5em !important;
+}
+
+#choose-tables label{
+    padding-left: 1.5em;
+}
