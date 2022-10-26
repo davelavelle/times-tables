@@ -285,7 +285,7 @@ function App() {
                         <Col xs={1}>
                         </Col>
                         <Col xs={3}>
-                          {question.base} x {question.times}
+                          {question.times} x {question.base}
                         </Col>
                         <Col xs={1}>
                           =

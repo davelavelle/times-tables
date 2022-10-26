@@ -99,7 +99,7 @@ function TimesTablesTest({ questionSet, updateQuestionSet: saveQuestionSet, comp
                 <Form.Label>Question {questionNumber}</Form.Label>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
                     <Form.Label column xs="6">
-                        {questionSet?.questions[questionNumber - 1].base} x {questionSet?.questions[questionNumber - 1].times} =
+                        {questionSet?.questions[questionNumber - 1].times} x {questionSet?.questions[questionNumber - 1].base} =
                     </Form.Label>
                     <Col>
                         <InputGroup>
