@@ -30,6 +30,7 @@ function App() {
   const [showTimer, setShowTimer] = useState<boolean>(false);
   const [tablesList, setTablesList] = useState<TablesList[]>(tables())
   const [numberOfQuestions, setNumberOfQuestions] = useState<number>(0)
+  const [questionsSet, setQuestionsSet] = useState<number>(0)
   const [questionSet, updateQuestionSet] = useState<QuestionSet | undefined>(undefined)
 
   const tablesListCount = () => {
@@ -114,19 +115,26 @@ function App() {
       }
     } else {
       const q: string[] = [];
+      console.log(tablesListToTest().length);
+      
       for (let i = 1; i <= numberOfQuestions; i++) {
         const qLength = q.length;
         while (q.length === qLength) {
           const nextBase: number = parseInt((Math.random() * (tablesListToTest().length + 1)).toString());
           const nextTimes: number = parseInt((Math.random() * 13).toString()) + 1;
           const id = `${nextTimes}-${nextBase}`
-          if (!q.includes(id) && nextTimes <= 12 && nextBase <= q.length) {
+          console.log(`${id}=${q.length}`);
+          
+          if (!q.includes(id) && nextTimes <= 12 && nextBase <= tablesListToTest().length -1 ) {
+            console.log(`Added ${id}`);
+            
             q.push(id);
+            setQuestionsSet(q.length);
             questionList.push({
               num: i,
-              base: tablesListToTest()[0].table,
+              base: tablesListToTest()[nextBase].table,
               times: nextTimes,
-              correctAnswer: tablesListToTest()[0].table * nextTimes,
+              correctAnswer: tablesListToTest()[nextBase].table * nextTimes,
               givenAnswer: -1
             });
           }
@@ -253,6 +261,7 @@ function App() {
               <Button variant='success' size='lg' onClick={() => createTest()}>START TEST</Button>
               <Button variant='secondary' onClick={() => setPageState('CHOOSETIMER')}>BACK</Button>
               <Button variant='light' onClick={() => setPageState('HOME')}>CANCEL</Button>
+              { questionsSet }
             </Row>
           </section>
         );
